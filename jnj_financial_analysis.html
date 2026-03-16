@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Johnson & Johnson | Financial Analysis 2020–2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --ink: #1a1a2e;
+    --red: #c2002f;
+    --red-soft: #f9e8ec;
+    --teal: #006b6b;
+    --teal-soft: #e0f0f0;
+    --gold: #b8860b;
+    --gold-soft: #fef8e7;
+    --green: #1a6b3a;
+    --green-soft: #e8f5ee;
+    --muted: #6b7180;
+    --border: #e4e2dc;
+    --card: #ffffff;
+    --warm-dark: #16213e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--warm-dark);
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-left {
+    padding: 64px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-right {
+    background: var(--red);
+    padding: 64px 60px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .cover-right::before {
+    content: '+';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 400px;
+    color: rgba(255,255,255,0.06);
+    right: -60px;
+    top: -80px;
+    line-height: 1;
+  }
+
+  .cover-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .cover-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .cover-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .cs-item label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cs-item span {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    display: block;
+  }
+
+  .cs-item small { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+  .cover-right-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-right-stat {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-right-stat .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .cover-right-stat .desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+  }
+
+  /* TRANSFORMATION BANNER */
+  .transform-banner {
+    background: var(--ink);
+    padding: 20px 60px;
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .tb-item {
+    flex: 1;
+    padding: 0 24px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+  }
+
+  .tb-item:first-child { padding-left: 0; }
+  .tb-item:last-child { border-right: none; }
+
+  .tb-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tb-val { color: white; font-weight: 500; }
+  .tb-val .hi { color: #f6a623; font-weight: 700; }
+
+  /* LAYOUT */
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 60px; }
+
+  .section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .s-eye {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .s-head {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 36px;
+    line-height: 1.15;
+  }
+
+  /* SNAPSHOT GRID */
+  .snap-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .snap-cell {
+    padding: 22px 18px;
+    border-right: 1px solid var(--border);
+    background: var(--card);
+    position: relative;
+  }
+  .snap-cell:last-child { border-right: none; background: var(--ink); }
+  .snap-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--border);
+  }
+  .snap-cell:last-child::before { background: var(--red); }
+
+  .sc-yr {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .snap-cell:last-child .sc-yr { color: rgba(255,255,255,0.4); }
+
+  .sc-rev {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .snap-cell:last-child .sc-rev { color: white; }
+
+  .sc-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .bg-teal { background: var(--teal-soft); color: var(--teal); }
+  .bg-gold { background: var(--gold-soft); color: var(--gold); }
+  .bg-red-s { background: var(--red-soft); color: var(--red); }
+
+  .sc-rows { display: flex; flex-direction: column; gap: 5px; }
+
+  .sr {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+  }
+  .sr-l { color: var(--muted); }
+  .sr-v { font-weight: 600; }
+  .snap-cell:last-child .sr-l { color: rgba(255,255,255,0.4); }
+  .snap-cell:last-child .sr-v { color: white; }
+
+  /* NOTE BOX */
+  .note-box {
+    background: var(--gold-soft);
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: #5a4a0a;
+  }
+  .note-box strong { color: var(--gold); }
+
+  /* DATA TABLE */
+  .dtable { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 28px; }
+  .dtable th {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--ink);
+    text-align: right;
+  }
+  .dtable th:first-child { text-align: left; }
+  .dtable td {
+    padding: 10px 14px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .dtable td:first-child { text-align: left; color: var(--muted); }
+  .dtable tr:hover td { background: #faf9f6; }
+  .dtable .hdr td {
+    background: var(--ink);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+  }
+  .dtable .bld td { font-weight: 700; color: var(--ink); background: #f7f5f0; }
+  .up { color: var(--green); font-weight: 600; }
+  .dn { color: var(--red); font-weight: 600; }
+  .hi { color: var(--red); font-weight: 700; }
+
+  /* SEGMENT TILES */
+  .seg-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .seg-tile {
+    border: 1px solid var(--border);
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .st-head {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .st-name { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+  .st-desc { font-size: 11px; color: var(--muted); }
+
+  .st-rev {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .st-body { padding: 20px 24px; }
+
+  .st-products {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .st-products strong { color: var(--ink); }
+
+  .st-bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+  .st-bar-fill { height: 100%; border-radius: 2px; }
+  .fill-red { background: var(--red); }
+  .fill-teal { background: var(--teal); }
+
+  .st-metric-row {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+  }
+
+  .stm-item .stm-val { font-weight: 700; color: var(--ink); font-size: 16px; }
+  .stm-item .stm-lbl { color: var(--muted); font-size: 11px; }
+
+  /* PIPELINE BOX */
+  .pipeline-box {
+    background: var(--warm-dark);
+    padding: 40px 44px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pipeline-box::before {
+    content: 'Rx';
+    position: absolute;
+    right: 40px;
+    bottom: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    color: rgba(255,255,255,0.03);
+    font-style: italic;
+  }
+
+  .pb-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+
+  .pb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pb-item .pb-drug {
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .pb-item .pb-indication {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .pb-item .pb-rev {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: #f6a623;
+    font-weight: 600;
+  }
+
+  /* KPI TILES */
+  .kpi-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .kpi-tile {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-tile::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--red);
+  }
+
+  .kpi-tile.teal::after { background: var(--teal); }
+  .kpi-tile.gold::after { background: var(--gold); }
+
+  .kt-l {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .kt-v {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .kt-t { font-size: 11.5px; color: var(--muted); margin-bottom: 12px; }
+  .kt-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .kt-fill { height: 100%; background: var(--red); border-radius: 2px; }
+  .kpi-tile.teal .kt-fill { background: var(--teal); }
+  .kpi-tile.gold .kt-fill { background: var(--gold); }
+
+  /* RISK TABLE */
+  .rtable { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .rtable th {
+    background: var(--ink);
+    color: white;
+    padding: 11px 16px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .rtable td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 12.5px;
+  }
+  .rtable tr:hover td { background: #faf9f6; }
+
+  .pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 10.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+  .pill-r { background: var(--red-soft); color: var(--red); }
+  .pill-g { background: var(--green-soft); color: var(--green); }
+  .pill-h { background: var(--red-soft); color: var(--red); }
+  .pill-m { background: var(--gold-soft); color: var(--gold); }
+  .pill-l { background: var(--green-soft); color: var(--green); }
+  .pill-t { background: var(--teal-soft); color: var(--teal); }
+
+  /* SCENARIOS */
+  .sc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .sc-card { border: 1px solid var(--border); overflow: hidden; }
+  .sc-head {
+    padding: 14px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .sc-bear .sc-head { background: var(--red-soft); color: var(--red); }
+  .sc-base .sc-head { background: var(--ink); color: white; }
+  .sc-bull .sc-head { background: var(--green-soft); color: var(--green); }
+
+  .sc-body { padding: 20px; background: var(--card); }
+  .sc-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .sc-row:last-child { border-bottom: none; }
+  .sc-lbl { color: var(--muted); }
+  .sc-val { font-weight: 700; }
+
+  /* VALUATION */
+  .val-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .vcard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 22px 18px;
+    text-align: center;
+  }
+
+  .v-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .v-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .v-sub { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .v-verdict { font-size: 11px; font-weight: 700; margin-top: 6px; }
+
+  /* PROSE */
+  .prose { max-width: 800px; }
+  .prose p { margin-bottom: 20px; color: #1e2330; line-height: 1.8; font-size: 14px; }
+  .prose strong { font-weight: 700; color: var(--ink); }
+
+  /* EXEC BOX */
+  .exec {
+    background: var(--warm-dark);
+    padding: 52px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exec::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 40%, rgba(194,0,47,0.12) 0%, transparent 50%);
+  }
+
+  .exec-inner { position: relative; z-index: 1; }
+
+  .exec-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+
+  .exec p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+    max-width: 820px;
+  }
+
+  .exec p strong { color: white; font-weight: 600; }
+
+  .exec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .eg-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .eg-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .eg-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.55; }
+
+  /* BAR CHART */
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    height: 150px;
+    margin-bottom: 44px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .bar-grp {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .bar-inner {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .b { flex: 1; border-radius: 2px 2px 0 0; transition: opacity 0.2s; }
+  .b:hover { opacity: 0.75; }
+  .b-rev { background: var(--ink); }
+  .b-oi { background: var(--red); }
+  .b-ni { background: var(--teal); }
+
+  .bar-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+  .leg { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+  .leg-d { width: 12px; height: 12px; border-radius: 2px; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.35);
+    padding: 28px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .footer-brand { color: white; font-size: 13px; font-family: 'Manrope', sans-serif; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-left">
+    <div>
+      <div class="cover-tag">SEC 10-K / 8-K Analysis · 2020–2025 · Healthcare</div>
+      <h1>Johnson &<br>Johnson</h1>
+      <div class="cover-sub">Innovative Medicine · MedTech · NYSE: JNJ<br>Five-Year Performance Analysis · Post-Kenvue Spin-off Era · Growth Outlook 2026–2028</div>
+    </div>
+    <div class="cover-stats">
+      <div class="cs-item">
+        <label>FY2024 Revenue</label>
+        <span>$88.8B</span>
+        <small>+4.3% YoY</small>
+      </div>
+      <div class="cs-item">
+        <label>Market Cap</label>
+        <span>~$394B</span>
+        <small>As of March 2025</small>
+      </div>
+      <div class="cs-item">
+        <label>Adj. EPS FY2024</label>
+        <span>$9.98</span>
+        <small>+0.6% YoY</small>
+      </div>
+      <div class="cs-item">
+        <label>Dividend Streak</label>
+        <span>62 Years</span>
+        <small>Dividend King</small>
+      </div>
+    </div>
+  </div>
+  <div class="cover-right">
+    <div class="cover-right-label">FY2025 Annual FCF</div>
+    <div class="cover-right-stat">
+      <div class="big">$20B+</div>
+      <div class="desc">Record free cash flow · Powering M&A<br>and pipeline investment in New J&J era</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSFORMATION BANNER -->
+<div class="transform-banner">
+  <div class="tb-item">
+    <div class="tb-label">2023 Transformation</div>
+    <div class="tb-val"><span class="hi">Kenvue spin-off</span> — consumer health separated</div>
+  </div>
+  <div class="tb-item">
+    <div class="tb-label">Focus Areas</div>
+    <div class="tb-val">Oncology · Immunology · Neuroscience · Cardiovascular · Surgery · Vision</div>
+  </div>
+  <div class="tb-item">
+    <div class="tb-label">2025 Announcement</div>
+    <div class="tb-val"><span class="hi">DePuy Synthes</span> orthopaedics spinoff — next 18–24 months</div>
+  </div>
+  <div class="tb-item">
+    <div class="tb-label">Credit Rating</div>
+    <div class="tb-val"><span class="hi">AAA</span> — one of only 2 US companies with prime rating</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- SECTION 1: SNAPSHOT -->
+<div class="section">
+  <div class="s-eye">Section 01</div>
+  <div class="s-head">Company Snapshot & Five-Year Performance</div>
+
+  <div style="display:inline-flex;align-items:center;gap:12px;background:white;border:1px solid var(--border);padding:12px 20px;margin-bottom:28px;">
+    <div style="width:36px;height:36px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:700;font-family:'Cormorant Garamond',serif;">A</div>
+    <div>
+      <div style="font-weight:700;color:var(--ink);font-size:13px;">Akanksha Sharma</div>
+      <div style="color:var(--muted);font-size:11px;">FP&amp;A Analyst · MS Financial Analytics, Stevens Institute of Technology</div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>⚠️ Important context:</strong> J&J's historical financials include Consumer Health (Kenvue) segment through August 2023. Post-spin, 2023–2025 figures reflect Innovative Medicine + MedTech only. All comparisons in this report note where Kenvue impacts comparability. Net income figures are highly variable due to one-time litigation charges and divestitures — Adjusted EPS is the primary profitability metric used by management and analysts.
+  </div>
+
+  <div class="snap-grid">
+    <div class="snap-cell">
+      <div class="sc-yr">FY 2020</div>
+      <div class="sc-rev">$82.6B</div>
+      <span class="sc-badge bg-gold">+0.6%</span>
+      <div class="sc-rows">
+        <div class="sr"><span class="sr-l">Adj. EPS</span><span class="sr-v">$8.03</span></div>
+        <div class="sr"><span class="sr-l">Op. CF</span><span class="sr-v">~$23B</span></div>
+        <div class="sr"><span class="sr-l">R&D Spend</span><span class="sr-v">$12.2B</span></div>
+        <div class="sr"><span class="sr-l">Dividend</span><span class="sr-v">$4.04/sh</span></div>
+        <div class="sr"><span class="sr-l">Segments</span><span class="sr-v">3 (incl. Consumer)</span></div>
+      </div>
+    </div>
+    <div class="snap-cell">
+      <div class="sc-yr">FY 2021</div>
+      <div class="sc-rev">$93.8B</div>
+      <span class="sc-badge bg-teal">+13.6%</span>
+      <div class="sc-rows">
+        <div class="sr"><span class="sr-l">Adj. EPS</span><span class="sr-v">$9.80</span></div>
+        <div class="sr"><span class="sr-l">Op. CF</span><span class="sr-v">~$24B</span></div>
+        <div class="sr"><span class="sr-l">R&D Spend</span><span class="sr-v">$14.7B</span></div>
+        <div class="sr"><span class="sr-l">COVID Vax Rev.</span><span class="sr-v">$2.4B</span></div>
+        <div class="sr"><span class="sr-l">Dividend</span><span class="sr-v">$4.24/sh</span></div>
+      </div>
+    </div>
+    <div class="snap-cell">
+      <div class="sc-yr">FY 2022</div>
+      <div class="sc-rev">$93.8B</div>
+      <span class="sc-badge bg-gold">Flat</span>
+      <div class="sc-rows">
+        <div class="sr"><span class="sr-l">Adj. EPS</span><span class="sr-v">$10.15</span></div>
+        <div class="sr"><span class="sr-l">Op. CF</span><span class="sr-v">~$19.8B</span></div>
+        <div class="sr"><span class="sr-l">R&D Spend</span><span class="sr-v">$14.6B</span></div>
+        <div class="sr"><span class="sr-l">FX Headwind</span><span class="sr-v">-$4B rev.</span></div>
+        <div class="sr"><span class="sr-l">Dividend</span><span class="sr-v">$4.45/sh</span></div>
+      </div>
+    </div>
+    <div class="snap-cell">
+      <div class="sc-yr">FY 2023</div>
+      <div class="sc-rev">$85.2B*</div>
+      <span class="sc-badge bg-teal">+6.5%</span>
+      <div class="sc-rows">
+        <div class="sr"><span class="sr-l">Adj. EPS</span><span class="sr-v">$9.92</span></div>
+        <div class="sr"><span class="sr-l">FCF</span><span class="sr-v">~$18.4B</span></div>
+        <div class="sr"><span class="sr-l">R&D Spend</span><span class="sr-v">$15.1B</span></div>
+        <div class="sr"><span class="sr-l">Kenvue spin</span><span class="sr-v">Aug 2023</span></div>
+        <div class="sr"><span class="sr-l">Dividend</span><span class="sr-v">$4.70/sh</span></div>
+      </div>
+    </div>
+    <div class="snap-cell">
+      <div class="sc-yr">FY 2024 ★</div>
+      <div class="sc-rev">$88.8B</div>
+      <span class="sc-badge bg-teal">+4.3%</span>
+      <div class="sc-rows">
+        <div class="sr"><span class="sr-l">Adj. EPS</span><span class="sr-v">$9.98</span></div>
+        <div class="sr"><span class="sr-l">FCF</span><span class="sr-v">~$18.4B</span></div>
+        <div class="sr"><span class="sr-l">R&D Spend</span><span class="sr-v">$16.4B</span></div>
+        <div class="sr"><span class="sr-l">Acquisitions</span><span class="sr-v">Shockwave $13B</span></div>
+        <div class="sr"><span class="sr-l">2025 Adj. EPS guide</span><span class="sr-v">$10.75–$10.95</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAR CHART -->
+  <div class="legend">
+    <div class="leg"><div class="leg-d" style="background:var(--ink)"></div>Revenue</div>
+    <div class="leg"><div class="leg-d" style="background:var(--red)"></div>Operating Income (adj.)</div>
+    <div class="leg"><div class="leg-d" style="background:var(--teal)"></div>FCF</div>
+  </div>
+  <div class="bars">
+    <div class="bar-grp">
+      <div class="bar-inner">
+        <div class="b b-rev" style="height:88%"></div>
+        <div class="b b-oi" style="height:72%"></div>
+        <div class="b b-ni" style="height:76%"></div>
+      </div>
+      <div class="bar-lbl">2020</div>
+    </div>
+    <div class="bar-grp">
+      <div class="bar-inner">
+        <div class="b b-rev" style="height:100%"></div>
+        <div class="b b-oi" style="height:90%"></div>
+        <div class="b b-ni" style="height:82%"></div>
+      </div>
+      <div class="bar-lbl">2021</div>
+    </div>
+    <div class="bar-grp">
+      <div class="bar-inner">
+        <div class="b b-rev" style="height:100%"></div>
+        <div class="b b-oi" style="height:92%"></div>
+        <div class="b b-ni" style="height:68%"></div>
+      </div>
+      <div class="bar-lbl">2022</div>
+    </div>
+    <div class="bar-grp">
+      <div class="bar-inner">
+        <div class="b b-rev" style="height:91%"></div>
+        <div class="b b-oi" style="height:88%"></div>
+        <div class="b b-ni" style="height:72%"></div>
+      </div>
+      <div class="bar-lbl">2023*</div>
+    </div>
+    <div class="bar-grp">
+      <div class="bar-inner">
+        <div class="b b-rev" style="height:95%"></div>
+        <div class="b b-oi" style="height:90%"></div>
+        <div class="b b-ni" style="height:90%"></div>
+      </div>
+      <div class="bar-lbl">2024</div>
+    </div>
+  </div>
+
+  <!-- FULL DATA TABLE -->
+  <table class="dtable">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023*</th><th>FY2024</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hdr"><td colspan="6">Revenue & Profitability ($B)</td></tr>
+      <tr class="bld">
+        <td>Total Revenue</td>
+        <td>$82.6</td><td>$93.8</td><td>$93.8</td><td>$85.2</td><td class="hi">$88.8</td>
+      </tr>
+      <tr>
+        <td>Revenue Growth %</td>
+        <td>+0.6%</td><td class="up">+13.6%</td><td>flat</td><td class="up">+6.5%</td><td class="up">+4.3%</td>
+      </tr>
+      <tr>
+        <td>Innovative Medicine</td>
+        <td>~$45.6</td><td>~$52.1</td><td>~$52.6</td><td>$54.8</td><td class="hi">$56.9</td>
+      </tr>
+      <tr>
+        <td>MedTech</td>
+        <td>~$22.6</td><td>~$27.1</td><td>~$27.4</td><td>$30.4</td><td class="hi">$31.9</td>
+      </tr>
+      <tr class="bld">
+        <td>Adjusted EPS</td>
+        <td>$8.03</td><td>$9.80</td><td>$10.15</td><td>$9.92</td><td class="hi">$9.98</td>
+      </tr>
+      <tr>
+        <td>Adj. EPS Growth %</td>
+        <td>-7.5%</td><td class="up">+22%</td><td class="up">+3.6%</td><td class="dn">-2.3%</td><td class="up">+0.6%</td>
+      </tr>
+      <tr>
+        <td>R&D Investment</td>
+        <td>$12.2B</td><td>$14.7B</td><td>$14.6B</td><td>$15.1B</td><td class="hi">$16.4B</td>
+      </tr>
+      <tr>
+        <td>R&D as % of Revenue</td>
+        <td>14.8%</td><td>15.7%</td><td>15.6%</td><td>17.7%</td><td>18.5%</td>
+      </tr>
+      <tr class="hdr"><td colspan="6">Cash Flow & Capital Allocation ($B)</td></tr>
+      <tr class="bld">
+        <td>Free Cash Flow</td>
+        <td>~$21B</td><td>~$22B</td><td>~$17.5B</td><td>~$18.4B</td><td class="hi">~$18.4B</td>
+      </tr>
+      <tr>
+        <td>Dividend Per Share</td>
+        <td>$4.04</td><td>$4.24</td><td>$4.45</td><td>$4.70</td><td class="hi">$4.96</td>
+      </tr>
+      <tr>
+        <td>Dividend Growth YoY</td>
+        <td>+5%</td><td class="up">+5%</td><td class="up">+5%</td><td class="up">+5.6%</td><td class="up">+5.5%</td>
+      </tr>
+      <tr>
+        <td>Major Acquisitions</td>
+        <td>Momenta $6.5B</td><td>Mentor $1.1B</td><td>Abiomed $16.6B</td><td>Kenvue spin</td><td>Shockwave $13.1B</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;">* FY2023 revenues reflect partial Kenvue consolidation (spun Aug 2023). Adj. EPS is the primary performance metric per management guidance. All data from SEC 10-K/8-K filings.</p>
+</div>
+
+<!-- SECTION 2: SEGMENT DEEP DIVE -->
+<div class="section">
+  <div class="s-eye">Section 02</div>
+  <div class="s-head">Business Segments — The New J&J</div>
+
+  <div class="seg-tiles">
+    <div class="seg-tile">
+      <div class="st-head">
+        <div>
+          <div class="st-name" style="color:var(--red)">Innovative Medicine</div>
+          <div class="st-desc">Oncology · Immunology · Neuroscience · Cardiovascular · Pulmonary Hypertension</div>
+        </div>
+        <div>
+          <div class="st-rev" style="color:var(--red)">$56.9B</div>
+          <div style="font-size:11px;color:var(--muted);text-align:right;">64% of revenue</div>
+        </div>
+      </div>
+      <div class="st-body">
+        <div class="st-bar-track"><div class="st-bar-fill fill-red" style="width:64%"></div></div>
+        <div class="st-products">
+          <strong>Key Products:</strong> DARZALEX (myeloma, $11B+), STELARA (immunology, $10.9B — facing LOE 2025), TREMFYA (IBD expansion), ERLEADA (prostate cancer), RYBREVANT + LAZCLUZE (lung cancer — new OAS data), CARVYKTI (CAR-T, $1B+ platform)
+        </div>
+        <div class="st-metric-row">
+          <div class="stm-item">
+            <div class="stm-val">+5.5%</div>
+            <div class="stm-lbl">FY2024 growth</div>
+          </div>
+          <div class="stm-item">
+            <div class="stm-val">~30%+</div>
+            <div class="stm-lbl">Op. margin est.</div>
+          </div>
+          <div class="stm-item">
+            <div class="stm-val">$16.4B</div>
+            <div class="stm-lbl">R&D investment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seg-tile">
+      <div class="st-head">
+        <div>
+          <div class="st-name" style="color:var(--teal)">MedTech</div>
+          <div class="st-desc">Surgery · Orthopaedics · Cardiovascular · Vision · Wound Management</div>
+        </div>
+        <div>
+          <div class="st-rev" style="color:var(--teal)">$31.9B</div>
+          <div style="font-size:11px;color:var(--muted);text-align:right;">36% of revenue</div>
+        </div>
+      </div>
+      <div class="st-body">
+        <div class="st-bar-track"><div class="st-bar-fill fill-teal" style="width:36%"></div></div>
+        <div class="st-products">
+          <strong>Key Products:</strong> Shockwave (cardiovascular, acquired FY2024), Abiomed (heart failure), VARIPULSE (atrial fibrillation), OTTAVA (soft-tissue surgical robot — pending FDA), DePuy Synthes (orthopaedics — <em>spinoff planned 18-24 months</em>), ACUVUE contact lenses
+        </div>
+        <div class="st-metric-row">
+          <div class="stm-item">
+            <div class="stm-val">+4.2%</div>
+            <div class="stm-lbl">FY2024 growth</div>
+          </div>
+          <div class="stm-item">
+            <div class="stm-val">5–7%</div>
+            <div class="stm-lbl">Long-term CAGR target</div>
+          </div>
+          <div class="stm-item">
+            <div class="stm-val">OTTAVA</div>
+            <div class="stm-lbl">Robotic surgery launch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE SPOTLIGHT -->
+  <div class="pipeline-box">
+    <div class="pb-label">⚕ Key Pipeline Products — Revenue Drivers FY2025–2028</div>
+    <div class="pb-grid">
+      <div class="pb-item">
+        <div class="pb-drug">DARZALEX</div>
+        <div class="pb-indication">Multiple myeloma · Expanding to smoldering myeloma · Now world's top-selling cancer drug</div>
+        <div class="pb-rev">$11B+ FY2024</div>
+      </div>
+      <div class="pb-item">
+        <div class="pb-drug">RYBREVANT + LAZCLUZE</div>
+        <div class="pb-indication">EGFR+ non-small cell lung cancer · OS data positive · Replacing Stelara LOE impact</div>
+        <div class="pb-rev">~$1B+ est. FY2025</div>
+      </div>
+      <div class="pb-item">
+        <div class="pb-drug">CARVYKTI</div>
+        <div class="pb-indication">CAR-T cell therapy · Multiple myeloma · Joined $1B platform — growing 100%+ annually</div>
+        <div class="pb-rev">~$1.3B est. FY2025</div>
+      </div>
+      <div class="pb-item">
+        <div class="pb-drug">OTTAVA</div>
+        <div class="pb-indication">Soft tissue surgical robot · Competing with Intuitive Surgical · IFO approval pending</div>
+        <div class="pb-rev">Multi-B $ potential 2026+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: TREND ANALYSIS -->
+<div class="section">
+  <div class="s-eye">Section 03</div>
+  <div class="s-head">Trend Analysis</div>
+  <div class="prose">
+    <p><strong>Revenue Trajectory — Transformation Creates Temporary Distortion.</strong> J&J's headline revenue shows apparent decline from $93.8B (FY2021–22) to $85.2B (FY2023) — but this is almost entirely explained by the Kenvue consumer health spin-off, which removed approximately $15B in annual revenue. On a continuing operations basis, the underlying Innovative Medicine and MedTech segments have grown consistently at 5–8% annually. The $88.8B FY2024 revenue represents strong underlying growth driven by DARZALEX crossing $11B in annual sales, Shockwave Medical integration, and MedTech procedure volume recovery. The forward revenue trajectory excluding DePuy Synthes (pending spinoff) will show another revenue step-down — but this is value-enhancing portfolio simplification, not deterioration.</p>
+    <p><strong>Adj. EPS Pressure — Stelara LOE is the Central FY2025 Challenge.</strong> STELARA generated approximately $10.9B in FY2023 revenue and faces US biosimilar entry beginning January 2025 — creating a $3–4B annual revenue headwind as market share erodes over 2025–2026. Management's FY2025 Adjusted EPS guidance of $10.75–$10.95 implies only ~8% growth despite this significant headwind — demonstrating the offsetting power of DARZALEX expansion, CARVYKTI growth, and new launches. R&D investment has grown steadily from $12.2B to $16.4B over the study period — 18.5% of revenue in FY2024 — reflecting management's confidence in the pipeline filling the Stelara gap through FY2027–2028.</p>
+    <p><strong>Cash Flow Quality — Exceptional and Consistent.</strong> J&J generates approximately $18–22B in free cash flow annually — one of the most consistent FCF generators in global healthcare. The AAA credit rating (one of only two US companies) reflects this financial strength. The dividend has been raised for 62 consecutive years — compounding at approximately 5–6% annually — making J&J a Dividend King. Capital allocation priorities have been acquisitions (Abiomed $16.6B FY2022, Shockwave $13.1B FY2024, Intra-Cellular FY2025) supplemented by steady buybacks. The FY2025 FCF of $20B+ is a record, signalling that Kenvue removal has improved the overall FCF quality of the remaining business.</p>
+    <p><strong>Portfolio Sharpening — The New J&J Thesis.</strong> CEO Joaquin Duato has systematically sharpened J&J's focus to six high-growth, high-margin areas: Oncology, Immunology, Neuroscience, Cardiovascular, Surgery, and Vision. The Kenvue spin (2023), planned DePuy Synthes orthopaedics spin (2026–2027), and aggressive acquisition of innovation assets in cardiovascular (Shockwave, V-Wave) and neuroscience (Intra-Cellular) collectively represent a once-in-a-generation portfolio transformation. The financial implication is higher average revenue growth rates, higher operating margins, and re-rating potential from specialty pharma/medtech peers.</p>
+  </div>
+</div>
+
+<!-- SECTION 4: KPIs -->
+<div class="section">
+  <div class="s-eye">Section 04</div>
+  <div class="s-head">Key Performance Indicators</div>
+
+  <div class="kpi-tiles">
+    <div class="kpi-tile">
+      <div class="kt-l">Adj. EPS 5-Year CAGR</div>
+      <div class="kt-v">+4.5%</div>
+      <div class="kt-t">$8.03 (FY20) → $9.98 (FY24) · Resilient through LOE headwinds</div>
+      <div class="kt-bar"><div class="kt-fill" style="width:60%"></div></div>
+    </div>
+    <div class="kpi-tile teal">
+      <div class="kt-l">Annual Free Cash Flow</div>
+      <div class="kt-v">~$20B+</div>
+      <div class="kt-t">▲ FY2025 record · Consistent $18–22B range</div>
+      <div class="kt-bar"><div class="kt-fill" style="width:95%"></div></div>
+    </div>
+    <div class="kpi-tile gold">
+      <div class="kt-l">R&D Investment</div>
+      <div class="kt-v">$16.4B</div>
+      <div class="kt-t">18.5% of revenue · Growing 7% annually · Pipeline fuelling</div>
+      <div class="kt-bar"><div class="kt-fill" style="width:78%"></div></div>
+    </div>
+    <div class="kpi-tile">
+      <div class="kt-l">Dividend Consecutive Growth</div>
+      <div class="kt-v">62 Yrs</div>
+      <div class="kt-t">Dividend King · ~5–6% annual increase · $4.96/sh FY2024</div>
+      <div class="kt-bar"><div class="kt-fill" style="width:100%"></div></div>
+    </div>
+    <div class="kpi-tile teal">
+      <div class="kt-l">DARZALEX Revenue</div>
+      <div class="kt-v">$11B+</div>
+      <div class="kt-t">▲ World's best-selling cancer drug · 20%+ growth · Expanding indications</div>
+      <div class="kt-bar"><div class="kt-fill" style="width:85%"></div></div>
+    </div>
+    <div class="kpi-tile gold">
+      <div class="kt-l">Operating Margin (adj.)</div>
+      <div class="kt-v">~30%</div>
+      <div class="kt-t">→ Stable-improving · Higher as consumer exits · Pharma mix expanding</div>
+      <div class="kt-bar"><div class="kt-fill" style="width:72%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: RISKS & OPPORTUNITIES -->
+<div class="section">
+  <div class="s-eye">Section 05</div>
+  <div class="s-head">Risks & Opportunities</div>
+
+  <table class="rtable">
+    <thead>
+      <tr>
+        <th>Type</th><th>Item</th><th>Detail</th><th>Financial Impact</th><th>Likelihood</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="pill pill-r">RISK</span></td>
+        <td><strong>Stelara LOE</strong></td>
+        <td>US biosimilars entered January 2025. STELARA ($10.9B FY2023 peak) will lose 60–80% market share over 2025–2026 as 10+ biosimilars compete on price</td>
+        <td>$3–4B annual revenue headwind through FY2026. Adj. EPS impact ~$1.50–2.00/share offset by growth drugs</td>
+        <td><span class="pill pill-h">High — Occurring</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-g">OPP</span></td>
+        <td><strong>DARZALEX Expansion</strong></td>
+        <td>Smoldering myeloma indication filing + subcutaneous formulation driving deeper penetration. Could reach $15B+ by FY2027 — only second drug in history to reach this level</td>
+        <td>$3–4B incremental revenue opportunity vs FY2024 baseline. Replaces Stelara LOE impact</td>
+        <td><span class="pill pill-h">High</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-r">RISK</span></td>
+        <td><strong>Talc Litigation</strong></td>
+        <td>Ongoing talc-related cancer lawsuits. Third bankruptcy filing attempt underway. Institutional investors apply "litigation discount" to J&J valuation</td>
+        <td>Estimated total liability $6–10B+ over time. Creates uncertainty in NAV calculation and limits P/E re-rating</td>
+        <td><span class="pill pill-m">Medium</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-g">OPP</span></td>
+        <td><strong>OTTAVA Robotic Surgery</strong></td>
+        <td>Soft tissue surgical robot filing progressing. $30B+ global surgical robotics market dominated by Intuitive Surgical. J&J's hospital relationships and MedTech scale provide competitive advantage</td>
+        <td>Potential $2–4B revenue opportunity by FY2028. Transform MedTech margin profile</td>
+        <td><span class="pill pill-m">Medium</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-g">OPP</span></td>
+        <td><strong>CAR-T Platform Scale</strong></td>
+        <td>CARVYKTI growing 100%+ annually. Multiple myeloma market expanding and earlier line treatment driving broader addressable population</td>
+        <td>$3–5B annual revenue platform by FY2027. Highest-margin oncology franchise</td>
+        <td><span class="pill pill-h">High</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-r">RISK</span></td>
+        <td><strong>IRA Drug Pricing (US)</strong></td>
+        <td>Inflation Reduction Act allows Medicare price negotiation. DARZALEX and other J&J products could face mandated discounts from 2026–2028</td>
+        <td>Estimated 5–15% price reduction on selected products. $500M–$1.5B annual revenue impact</td>
+        <td><span class="pill pill-m">Medium</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-g">OPP</span></td>
+        <td><strong>Neuroscience Portfolio — Intra-Cellular</strong></td>
+        <td>Intra-Cellular acquisition (FY2025) adds CAPLYTA for depression and bipolar. Growing mental health treatment demand and new indications pipeline</td>
+        <td>$2–3B annual revenue platform with 15%+ growth trajectory over 3 years</td>
+        <td><span class="pill pill-h">High</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: PROJECTIONS -->
+<div class="section">
+  <div class="s-eye">Section 06</div>
+  <div class="s-head">Three-Year Growth Projections (2026–2028)</div>
+
+  <div class="sc-grid">
+    <div class="sc-card sc-bear">
+      <div class="sc-head">Bear Case</div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Revenue Growth</span><span class="sc-val">2–3% p.a.</span></div>
+        <div class="sc-row"><span class="sc-lbl">Op. Margin</span><span class="sc-val">28%</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2026E Revenue</span><span class="sc-val">$91B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2027E Revenue</span><span class="sc-val">$93B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2028E Revenue</span><span class="sc-val">$96B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2028E Adj. EPS</span><span class="sc-val">~$11.00</span></div>
+        <div class="sc-row"><span class="sc-lbl">Scenario driver</span><span class="sc-val" style="color:var(--red);font-size:11px">Stelara wipes + IRA pricing</span></div>
+      </div>
+    </div>
+    <div class="sc-card sc-base">
+      <div class="sc-head">Base Case ★</div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Revenue Growth</span><span class="sc-val">5–6% p.a.</span></div>
+        <div class="sc-row"><span class="sc-lbl">Op. Margin</span><span class="sc-val">31%</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2026E Revenue</span><span class="sc-val">$93B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2027E Revenue</span><span class="sc-val">$98B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2028E Revenue</span><span class="sc-val">$104B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2028E Adj. EPS</span><span class="sc-val">~$13.50</span></div>
+        <div class="sc-row"><span class="sc-lbl">Scenario driver</span><span class="sc-val" style="color:var(--teal);font-size:11px">DARZALEX + CARVYKTI at scale</span></div>
+      </div>
+    </div>
+    <div class="sc-card sc-bull">
+      <div class="sc-head">Bull Case</div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Revenue Growth</span><span class="sc-val">8–9% p.a.</span></div>
+        <div class="sc-row"><span class="sc-lbl">Op. Margin</span><span class="sc-val">33%</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2026E Revenue</span><span class="sc-val">$96B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2027E Revenue</span><span class="sc-val">$104B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2028E Revenue</span><span class="sc-val">$113B</span></div>
+        <div class="sc-row"><span class="sc-lbl">FY2028E Adj. EPS</span><span class="sc-val">~$16.00</span></div>
+        <div class="sc-row"><span class="sc-lbl">Scenario driver</span><span class="sc-val" style="color:var(--green);font-size:11px">OTTAVA + pipeline acceleration</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>The <strong>base case</strong> assumes 5–6% annual revenue growth — in line with management guidance of 2.5–3.5% operational growth for 2025 accelerating as new launches offset Stelara LOE by 2026. DARZALEX reaching $14–15B by FY2027, CARVYKTI scaling to $3B+, and the neuroscience franchise from Intra-Cellular collectively fill the Stelara gap. Operating margin expansion to 31% reflects the higher-margin pharmaceutical mix as consumer (Kenvue) and eventually orthopaedics (DePuy Synthes) exit the portfolio.</p>
+    <p>The <strong>bull case</strong> requires OTTAVA regulatory approval and successful robotic surgery market penetration, DARZALEX reaching blockbuster scale in earlier treatment lines, and CAR-T expansion into new indications. The <strong>bear case</strong> materialises if Stelara erosion is faster than expected, IRA pricing negotiations are more punitive, and pipeline execution disappoints — resulting in near-flat EPS growth through FY2028.</p>
+  </div>
+</div>
+
+<!-- SECTION 7: VALUATION -->
+<div class="section">
+  <div class="s-eye">Section 07</div>
+  <div class="s-head">Valuation Snapshot</div>
+
+  <div class="val-row">
+    <div class="vcard">
+      <div class="v-lbl">Forward P/E</div>
+      <div class="v-num">15.5x</div>
+      <div class="v-sub">FY2025E Adj. EPS ~$10.85<br>5-yr avg: ~18x · Significant discount<br></div>
+      <div class="v-verdict" style="color:var(--green)">Undervalued — litigation discount</div>
+    </div>
+    <div class="vcard">
+      <div class="v-lbl">EV / EBITDA</div>
+      <div class="v-num">12.8x</div>
+      <div class="v-sub">Large-cap pharma peer median: 16–18x<br>Discount to Eli Lilly (40x+), AbbVie (20x+)<br></div>
+      <div class="v-verdict" style="color:var(--green)">Attractive vs peers</div>
+    </div>
+    <div class="vcard">
+      <div class="v-lbl">Dividend Yield</div>
+      <div class="v-num">3.1%</div>
+      <div class="v-sub">$4.96/sh annual dividend<br>S&P 500 avg: ~1.3% · Significant premium<br></div>
+      <div class="v-verdict" style="color:var(--teal)">Income + growth combination</div>
+    </div>
+    <div class="vcard">
+      <div class="v-lbl">DCF Implied Range</div>
+      <div class="v-num">$170–210</div>
+      <div class="v-sub">WACC: 7.5% · TGR: 3%<br>Base case intrinsic value range<br></div>
+      <div class="v-verdict" style="color:var(--green)">10–25% upside at midpoint</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>At approximately $165 per share, J&J trades at only 15.5x forward adjusted earnings — a meaningful discount to its 5-year historical average of ~18x and a significant discount to large-cap pharma peers. This "litigation discount" — applied by institutional investors due to ongoing talc-related lawsuits — appears excessive relative to the company's fundamental strength: AAA credit rating, $20B+ annual FCF, 62-year dividend growth streak, and a pipeline arguably stronger than at any point in recent history. Our DCF analysis at a 7.5% WACC and 3% terminal growth rate produces a base case intrinsic value of $170–210 per share — suggesting <strong>10–25% upside from current levels</strong>. The primary catalyst for re-rating is resolution of the talc litigation — which would remove the institutional discount and allow the stock to trade in line with pharma peers at 18–20x earnings.</p>
+  </div>
+</div>
+
+<!-- SECTION 8: EXEC SUMMARY -->
+<div class="section">
+  <div class="s-eye">Section 08</div>
+  <div class="s-head">FP&A Analyst — Executive Takeaway</div>
+
+  <div class="exec">
+    <div class="exec-inner">
+      <div class="exec-lbl">For the CFO / Board of Directors</div>
+      <p>Johnson & Johnson is executing one of the most ambitious portfolio transformations in healthcare history — methodically divesting lower-growth assets (Kenvue 2023, DePuy Synthes 2026–2027) while simultaneously acquiring high-growth innovation assets in cardiovascular, neuroscience, and oncology. The financial profile of the <strong>"New J&J"</strong> — pure-play Innovative Medicine and high-value MedTech — will carry structurally higher operating margins, faster revenue growth, and superior capital efficiency than the historical conglomerate. The near-term financial narrative for the Board is dominated by the <strong>Stelara LOE transition</strong> in 2025–2026: management must demonstrate that DARZALEX expansion, CARVYKTI scale, RYBREVANT launch, and the neuroscience portfolio collectively generate enough growth to offset $3–4B in annual Stelara revenue erosion. FY2025 Adj. EPS guidance of $10.75–$10.95 (+8.7% growth) suggests management is confident — but execution against that guidance is the critical FY2025 test. The <strong>talc litigation resolution</strong> remains the single most important non-operating variable: a settlement would remove the institutional discount and potentially unlock 15–20% share price appreciation independent of operating performance.</p>
+
+      <div class="exec-grid">
+        <div>
+          <div class="eg-num">01</div>
+          <div class="eg-title">Stelara LOE Bridge</div>
+          <div class="eg-desc">Track quarterly: is DARZALEX + CARVYKTI + RYBREVANT revenue growth rate exceeding Stelara revenue erosion? The first two quarters of FY2025 will set the narrative for the next 18 months.</div>
+        </div>
+        <div>
+          <div class="eg-num">02</div>
+          <div class="eg-title">Pipeline Execution Scorecard</div>
+          <div class="eg-desc">OTTAVA FDA timeline, TAR-200 bladder cancer submission, TREMFYA IBD approval — each represents $1B+ incremental revenue. Build a pipeline scorecard tracking probability-weighted revenue by FY2027.</div>
+        </div>
+        <div>
+          <div class="eg-num">03</div>
+          <div class="eg-title">Portfolio Simplification Value</div>
+          <div class="eg-desc">Model the DePuy Synthes spinoff financial impact: revenue step-down vs margin improvement vs capital release. J&J's margin profile post-spinoff should re-rate toward pure-play pharma peers.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Akanksha Sharma · FP&A Portfolio</div>
+  <div>Data sourced from SEC 10-K and 8-K filings · Analysis March 2026</div>
+  <div>JNJ · NYSE · Healthcare · Innovative Medicine · MedTech</div>
+</div>
+
+</body>
+</html>
